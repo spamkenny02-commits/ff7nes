@@ -1,0 +1,96 @@
+FF7 NES French Editor — version 0.1
+=================================
+
+DÉMARRAGE SUR WINDOWS
+1. Extraire entièrement ce ZIP dans un dossier.
+2. Double-cliquer sur FF7_NES_EDITOR.html : il s’ouvre dans le navigateur.
+3. Cliquer sur « Ouvrir une ROM » et choisir ff7_v22_base.nes.
+4. Rechercher un mot de la phrase rencontrée en jouant, puis cliquer sur
+   l’entrée. Modifier le texte et vérifier l’aperçu et la jauge.
+5. « Enregistrer le projet » télécharge un fichier .ff7fr. Ce fichier
+   contient la ROM de départ et les corrections. « Ouvrir un projet »
+   suffit pour reprendre, même sur un autre ordinateur.
+6. « Exporter ROM + IPS » télécharge un ZIP. Extraire ce ZIP et ouvrir
+   FF7_FR.nes dans FCEUX. L’original reste intact.
+
+Le logiciel est autonome, sans installation, serveur, compte ni réseau.
+L’interface a été testée dans Chromium. Utiliser un navigateur récent
+avec JavaScript activé. Aucun module Python n’est nécessaire pour l’utiliser.
+
+FONCTIONS
+- 2 896 textes uniques reconnus, dont 2 130 dialogues.
+- Objets, sorts, équipements, ennemis, personnages, descriptions et système.
+- 17 libellés graphiques consultables, dont 16 modifiables.
+- Recherche par texte, catégorie, ID et offset ; filtre des modifications.
+- Aperçu automatique avec les pixels de la police de la ROM.
+- Retours à la ligne et pagination indicative ; bouton de coupe des lignes.
+- Export PNG de l’aperçu.
+- Extraction et importation d’un catalogue JSON des textes.
+- Projet .ff7fr autonome ; brouillon local si le navigateur le permet.
+- Export ROM + IPS + bilan avec les empreintes SHA-256.
+
+COMMENT MODIFIER UN DIALOGUE
+Les retours à la ligne saisis dans le champ sont encodés comme les retours
+utilisés par le jeu. La place disponible est calculée en octets, pas selon
+la longueur des codes affichés. Par exemple {P:38} occupe 2 octets.
+
+Ne pas modifier ni retirer les codes {P:xx}, {C0}, {AF}, etc. Ils désignent
+les portraits, les icônes ou des données du moteur. Ils sont contrôlés à
+l’export. Les caractères de la police disponibles comprennent à é è ê ç
+Ç É â ù. Le caractère « ‥ » correspond aux deux points du jeu ; les autres
+accents ou certains signes typographiques ne sont pas disponibles.
+
+La jauge devient rouge si le texte dépasse son emplacement. Raccourcir la
+phrase. Les modifications invalides peuvent être conservées dans un projet
+pour les reprendre, mais empêchent l’export de la ROM.
+
+Le bouton « Couper les lignes » utilise le nombre de colonnes choisi pour
+l’aperçu. Relire le résultat : ce bouton ne connaît pas les fenêtres de
+chaque scène ni les choix interactifs. La police est réelle ; la fenêtre
+et la pagination sont simulées. Les portraits et certains codes dynamiques
+ne sont pas reproduits dans l’aperçu. Vérifier la scène dans FCEUX.
+
+POUR ÉDITER DES MENUS
+Choisir « Menus graphiques » dans les catégories. Les libellés compacts
+utilisent une police étroite en majuscules et une limite en pixels. Le menu
+de démarrage « Nouveau jeu » utilise la police de la ROM. « Continuer »
+est protégé car certains de ses tiles sont aussi utilisés par le titre.
+Un bitmap personnalisé provenant d’une ROM exportée est affiché tel quel ;
+son texte ne peut pas être reconnu automatiquement. Le projet .ff7fr garde
+le libellé saisi pour poursuivre l’édition.
+
+LIMITES DE CETTE PREMIÈRE VERSION
+- Profil spécifique à la v22 incluse et aux ROM exportées par cet outil.
+- Insertion dans les emplacements existants : pas de déplacement des textes
+  ni de mise à jour des pointeurs dans cette version.
+- 5 entrées protégées : 4 textes partagent des octets avec d’autres entrées,
+  et le bitmap « Continuer » partage des tiles avec le titre.
+- 45 références aux données sont exclues car leur texte ou leur terminaison
+  n’a pas été reconnu. Le bilan de couverture est fourni dans VALIDATION.txt.
+- Les lieux ne sont pas encore indexés. Rechercher la phrase visible.
+- Pas de liaison en direct avec FCEUX ou de raccourci F8 dans cette version.
+- La traduction complète et toutes les scènes ne sont pas certifiées.
+
+Le patch IPS exporté s’applique UNIQUEMENT à la ROM que tu as chargée :
+son empreinte SHA-256 est indiquée dans le bilan. La ROM exportée est déjà
+prête à jouer ; le patch est une autre façon d’obtenir le même résultat.
+
+ÉTATS DE SAUVEGARDE
+Les états FCEUX .fcs restaurent aussi les graphismes et les textes déjà
+chargés en mémoire. Pour contrôler une correction, recharger la scène ou
+redémarrer la ROM. Pour reprendre une sauvegarde normale .sav avec une
+nouvelle ROM, garder l’original et copier le .sav sous le même nom de base
+que la nouvelle ROM, dans le dossier de sauvegarde de FCEUX.
+
+FICHIERS DU PACK
+FF7_NES_EDITOR.html : logiciel autonome.
+ff7_v22_base.nes : ROM v22 de départ, non modifiée par les essais.
+LISEZ_MOI.txt : ce guide.
+VALIDATION.txt : vérifications réalisées et limites.
+APERÇU_EDITEUR.png : capture réelle de l’interface.
+preuves/ : captures FCEUX des modifications d’essai, non appliquées à la base.
+sources/ : moteur, interface, profil et tests pour poursuivre le développement.
+
+Pour développer : Node.js suffit pour les tests du moteur. Le test de
+l’interface utilise Playwright et un navigateur Chromium. Le logiciel
+lui-même ne dépend pas de ces outils.

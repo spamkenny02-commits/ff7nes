@@ -1,0 +1,13 @@
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+/edited_test.nes
+/edited_test.zip
+/ui_test.ff7fr
+/ui_export.zip
+/ui_catalog.json
+/EDITOR_SCREENSHOT.png
+/EDITOR_MENU_SCREENSHOT.png
+/EDITOR_SMALL_SCREENSHOT.png

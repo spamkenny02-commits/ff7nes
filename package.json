@@ -1,0 +1,11 @@
+{
+  "name": "ff7-nes-french-editor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Éditeur autonome de traduction pour FF7 NES FR v22",
+  "scripts": {
+    "build": "python3 sources/build_html.py",
+    "test": "node sources/test_core.js",
+    "test:ui": "node sources/test_ui.js"
+  }
+}

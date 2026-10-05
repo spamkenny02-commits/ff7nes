@@ -1,0 +1,55 @@
+FF7 NES French Editor v0.1 — Vérifications réalisées
+
+BASE
+Profil : ROM française v22, taille 2 097 168 octets.
+Mapper lu dans le fichier : 163.
+SHA-256 : eadf001a557732d50c626a6963d04d147c6c893b53bae1401dcdbd2e0abdd4bf
+La ROM de départ livrée est la v22 non modifiée. Les essais sont distincts.
+
+COUVERTURE
+2913 entrées uniques : 2896 textes et 17 libellés graphiques.
+2130 dialogues uniques.
+5 entrées protégées.
+45 références exclues : terminaison ou texte non reconnu, ou pointeur
+non exploitable dans ce profil. Les références partagées sont fusionnées.
+Cette couverture ne prouve pas que tous les textes du jeu sont extraits.
+
+MOTEUR
+- Les 2896 textes reconnus sont décodés puis réencodés à l’identique,
+  en conservant les espaces de leur emplacement original.
+- Un export sans modification restitue la ROM complète à l’octet près.
+- Une modification de dialogue ne change que les octets de son emplacement.
+- Le patch IPS reconstruit exactement la ROM exportée.
+- Les modifications de bitmaps produisent les mêmes pixels que l’aperçu,
+  avec l’ordre des blocs du menu combat 0, 2, 1, 3.
+- Dépassements, caractères non disponibles, codes protégés altérés,
+  données de projet invalides et ROM incompatible sont contrôlés.
+- Projet enregistré/réouvert et catalogue exporté/importé : même résultat.
+- Les ZIP générés sont relus avec zipfile ; CRC et empreintes vérifiés.
+
+INTERFACE — CHROMIUM, FICHIER LOCAL
+Ouverture de la v22, recherche, saisie, aperçu, téléchargement et réouverture
+d’un projet, extraction/importation JSON, téléchargement ROM/IPS, blocage
+des dépassements, menus graphiques, éléments protégés et guide : tests OK.
+Aucune erreur JavaScript pendant le test complet.
+Affichage contrôlé à 1480 px et 1000 px de largeur.
+
+FCEUX 2.6.5
+ROM d’essai produite par le même moteur, avec 93 octets changés :
+- Partie neuve au démarrage : rendu lisible, titre et Continuer conservés.
+- FRAPPE dans le menu et les annonces de combat : rendu lisible.
+- STAT dans le menu principal : rendu lisible.
+- GARDE, nom d’ennemi édité dans la table des textes : rendu lisible.
+Le replay a été parcouru jusqu’à 25 000 frames.
+La modification de dialogue Biggs:Waouh → Biggs:Salut a été vérifiée dans
+l’aperçu, par les tests d’insertion et par les exports de l’interface ;
+cette réplique n’a pas été rencontrée dans le segment du replay testé.
+Ces essais ne constituent pas un test de toute l’aventure.
+
+LIMITES
+Les textes restent dans leurs emplacements. Aucun déplacement, aucune
+mise à jour de pointeur, aucune nouvelle routine de jeu n’est injectée.
+La fenêtre de l’aperçu est indicative. Les portraits et certains codes
+dynamiques ne sont pas reproduits. L’import de textes est contrôlé avant
+l’application des changements. La vérification finale d’une scène se fait
+dans FCEUX.
