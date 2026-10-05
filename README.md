@@ -4,7 +4,7 @@
 
 ## Utilisation
 
-1. Télécharger et extraire [le pack v0.1](releases/FF7_NES_EDITOR_v0_1.zip), ou cloner ce dépôt.
+1. Télécharger et extraire [le pack v0.1](FF7_NES_EDITOR_v0_1.zip), ou cloner ce dépôt.
 2. Ouvrir `FF7_NES_EDITOR.html` dans un navigateur récent.
 3. Charger `ff7_v22_base.nes`.
 4. Modifier les entrées et contrôler l’aperçu.
@@ -55,10 +55,15 @@ Un navigateur existant peut être indiqué dans `FF7_TEST_BROWSER`, ses biblioth
 | `FF7_NES_EDITOR.html` | Application autonome générée |
 | `sources/` | Moteur, interface, profil, générateur et tests |
 | `ff7_v22_base.nes` | Base française v22 |
-| `preuves/` | Captures de validation dans FCEUX |
-| `patches/` | Correctifs successifs v19 → v20 → v21 → v22 et leurs guides |
-| `releases/` | Pack livré v0.1 |
+| `FF7_NES_EDITOR_v0_1.zip` | Pack livré, avec sources et captures FCEUX |
+| `FF7_PROJECT_ARCHIVE_20261005.zip` | Historique complet des fichiers de travail disponibles : anciennes ROM, patchs, scripts, audits, sauvegardes et captures |
 
 Les patchs successifs nécessitent la version de départ indiquée dans leur nom. Le patch exporté par l’éditeur nécessite exactement la ROM chargée, dont l’empreinte figure dans le bilan d’export.
 
 Les graphismes et données du jeu restent la propriété de leurs ayants droit. Ce dépôt ne leur attribue pas une nouvelle licence.
+
+## Conservation des travaux précédents
+
+L’[archive du projet](FF7_PROJECT_ARCHIVE_20261005.zip) conserve les fichiers disponibles lors de l’envoi : corrections des menus et des PV, ROM intermédiaires, scripts d’analyse, scripts Lua de validation, audits, données RAM/PPU/CHR, sauvegardes et captures. Son `ARCHIVE_INDEX.json` détaille chaque fichier avec sa taille et son empreinte SHA-256. Les noms et dossiers historiques sont conservés.
+
+Les exports d’essai sont distincts de la v22 de base. Les scripts historiques peuvent nécessiter l’adaptation de leurs chemins.
