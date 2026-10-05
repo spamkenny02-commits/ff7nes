@@ -1,0 +1,9 @@
+{
+  "browser": "Chromium",
+  "UI": "passed",
+  "pageErrors": [],
+  "downloadedProject": true,
+  "downloadedROMAndIPS": true,
+  "overflowBlocked": true,
+  "protectedEntries": true
+}

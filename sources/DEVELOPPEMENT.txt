@@ -1,0 +1,17 @@
+Le HTML est autonome. Les sources séparées sont fournies pour le modifier.
+
+Reconstruire : python3 build_html.py
+Tester le moteur : node test_core.js
+Tester l’interface : npm install playwright, installer Chromium pour Playwright,
+puis node test_ui.js. Un navigateur existant peut être indiqué dans
+FF7_TEST_BROWSER, ses dépendances dans FF7_TEST_LIBS.
+
+Le générateur make_manifest.py cartographie les emplacements propres à la v22.
+Il est fourni pour documenter le profil, pas pour analyser une autre édition
+de FF7. La cartographie est fixe ; l’application relit les textes dans la
+ROM chargée. Toute modification des pointeurs ou du code exige de reprendre
+l’analyse et les validations.
+
+Un projet contient la ROM de départ et les modifications. Il conserve aussi
+les brouillons invalides ; l’export ROM vérifie à nouveau chaque modification.
+Le catalogue JSON n’est appliqué que si toutes les modifications sont valides.
